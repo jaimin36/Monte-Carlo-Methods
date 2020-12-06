@@ -1,0 +1,25 @@
+import random
+import matplotlib.pyplot as plt
+import numpy as np
+
+x,y=[],[]
+x_hit,y_hit=[],[]
+x_miss,y_miss=[],[]
+success=0
+darts=1000000
+for i in range(darts):
+    x.append(random.uniform(0,1))
+    y.append(random.uniform(0,1))
+    
+    if x[i]**2+y[i]**2<=1:
+        x_hit.append(x[i])
+        y_hit.append(y[i])
+        success=success+1
+    else:
+        x_miss.append(x[i])
+        y_miss.append(y[i])
+        
+plt.scatter(x_hit,y_hit,color='r')
+plt.scatter(x_miss,y_miss,color='g')
+plt.show()
+print('The calculated value of pi is: {}'.format(4*success/darts))
