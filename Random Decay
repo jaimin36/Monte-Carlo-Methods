@@ -1,0 +1,19 @@
+import random
+import matplotlib.pyplot as plt
+import numpy as np
+
+x,y,i=[],[],1
+
+N_0=int(input("Enter initial no. of atoms: "))
+DecayP=int(input("Enter decay probability: "))
+while N_0>0:
+    x.append(i)
+    for a in range(N_0):
+        if random.uniform(0,100)<DecayP:
+            N_0-=1
+    y.append(N_0)
+    i=i+1
+plt.scatter(x,y)
+plt.xlabel('Time')
+plt.ylabel('No of particles')
+plt.show()       
