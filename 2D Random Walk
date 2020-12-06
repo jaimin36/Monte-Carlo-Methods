@@ -1,0 +1,18 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import random 
+n=5000
+x,y,r=np.zeros([n]),np.zeros([n]),1
+x0,y0=np.zeros([n]),np.zeros([n])
+
+for a in range(n-1):
+    x[a+1]=x[a]+(r*np.cos(random.uniform(0,2)*np.pi))
+    y[a+1]=y[a]+(r*np.sin(random.uniform(0,2)*np.pi))
+    
+    x0[a]=x[a+1]-x[a]
+    y0[a]=y[a+1]-y[a]
+    
+R=np.sqrt(sum(x0*x0)+sum(y0*y0))
+print("The average radial distance is: "+str(R))
+plt.plot(x,y)    
+plt.show()
