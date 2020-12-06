@@ -1,0 +1,33 @@
+#integration
+import numpy as np
+import random
+import matplotlib.pyplot as plt
+
+x_m=np.linspace(0,6,1000)
+y_max=max(x_m**2-x_m+1)
+
+darts=10000
+x,y=[],[]
+xupper_limit=6
+xlower_limit=0
+success=0
+
+x_hit,y_hit=[],[]
+x_miss,y_miss=[],[]
+for i in range(darts):
+    x.append(random.uniform(xlower_limit,xupper_limit))
+    y.append(random.uniform(0,y_max))
+    
+    if y[i]<=x[i]**2-x[i]+1:
+        success=success+1
+        x_hit.append(x[i])
+        y_hit.append(y[i])
+    else:
+        x_miss.append(x[i])
+        y_miss.append(y[i])
+        
+plt.scatter(x_hit,y_hit,color='r')
+plt.scatter(x_miss,y_miss,color='g')
+plt.show()
+        
+print("The integration from 0 to 6 is: {}".format((xupper_limit-xlower_limit)*y_max*success/darts))
